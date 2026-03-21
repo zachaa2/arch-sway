@@ -1,85 +1,91 @@
 {
-  "layer": "bot",
-  "spacing": 0,
-  "height": 0,
-  "margin-bottom": 0,
-  "margin-top": 5,
+  "layer": "top",
   "position": "top",
-  "margin-right": 400,
-  "margin-left": 400,
+  "height": 34,
+  "spacing": 0,
+
   "modules-left": [
-    "hyprland/workspaces",
+    "custom/logo",
     "sway/workspaces"
   ],
   "modules-center": [
-    "custom/applauncher"
+    "clock"
   ],
   "modules-right": [
     "network",
-    "battery",
+    "backlight",
     "pulseaudio",
-    "tray",
-    "clock"
+    "battery",
+    "tray"
   ],
-  "hyprland/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": false,
-    "tooltip": false
+
+  "custom/logo": {
+    "format": "󱄅",
+    "tooltip": false,
+    "on-click": "wofi --show drun --style ~/.config/wofi/gruvbox-dark.css"
   },
+
   "sway/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": false,
-    "tooltip": false
+    "disable-scroll": false,
+    "all-outputs": true,
+    "format": "{name}"
   },
-  "custom/applauncher": {
-    "format": "〇",
-    "on-click": "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 15",
-    "tooltip": false
-  },
-  "tray": {
-    "spacing": 10,
-    "tooltip": false
-  },
+
   "clock": {
-    "format": "󰅐 {:%H:%M}",
-    "tooltip": false
+    "format": "󰃭  {:%a, %b %d  |  󰥔 %I:%M %p}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1
+    }
   },
+
   "network": {
-    "format-wifi": " {bandwidthDownBits}",
-    "format-ethernet": " {bandwidthDownBits}",
-    "format-disconnected": "󰤮 No Network",
-    "interval": 5,
-    "tooltip": false
+    "format-wifi": "󰖩  {essid}",
+    "format-ethernet": "󰈀  Wired",
+    "format-disconnected": "󰖪  Offline",
+    "tooltip-format-wifi": "{essid}\nSignal: {signalStrength}%\nIP: {ipaddr}",
+    "tooltip-format-ethernet": "Ethernet\nIP: {ipaddr}",
+    "tooltip-format-disconnected": "No network connection",
+    "on-click": "kitty -e nmtui"
   },
+
+  "backlight": {
+    "format": "{icon}  {percent}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "tooltip-format": "Brightness: {percent}%",
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-"
+  },
+
   "pulseaudio": {
-    "scroll-step": 5,
-    "max-volume": 150,
-    "format": "{icon} {volume}%",
-    "format-bluetooth": "{icon} {volume}%",
-    "format-icons": [
-      "",
-      "",
-      " "
-    ],
-    "nospacing": 1,
-    "format-muted": " ",
+    "format": "{icon}  {volume}%",
+    "format-muted": "󰝟  muted",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "tooltip-format": "Volume: {volume}%",
     "on-click": "pavucontrol",
-    "tooltip": false
+    "on-scroll-up": "pamixer -i 5",
+    "on-scroll-down": "pamixer -d 5"
   },
+
   "battery": {
     "states": {
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon} {capacity}%",
-    "format-charging": "󰂄 {capacity}%",
-    "format-plugged": "󰂄{capacity}%",
-    "format-alt": "{icon} {time}",
-    "format-full": "󱈑 {capacity}%",
-    "format-icons": [
-      "󱊡",
-      "󱊢",
-      "󱊣"
-    ]
+    "format": "{icon}  {capacity}%",
+    "format-charging": "󰂄  {capacity}%",
+    "format-plugged": "󰂄  {capacity}%",
+    "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"],
+    "tooltip-format": "Battery: {capacity}%"
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
   }
 }
