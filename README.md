@@ -1,10 +1,10 @@
 # dotfiles
 
-Some of my dotfiles and other assets + resources I use. Configs and other resources should be compatible across common linux distros. 
+dotfiles and other assets + resources for arch linux using the sway window manager. Made on an EndeavourOS install. 
 
 Set up an SSH key with GitHub and clone into .dotfiles via ```git clone git@github.com:zachaa2/dotfiles.git ~/.dotfiles```
 
-## Layout
+## Repository Layout
 
 - `zsh/`
   Zsh config
@@ -18,15 +18,10 @@ Set up an SSH key with GitHub and clone into .dotfiles via ```git clone git@gith
 - `assets/wallpapers/`
   Some wallpapers I've used
 
-- `docs/`
-  Some key references and lists:
-    - `themes-and-icons.md` themes and icons used and where to find them 
-    - `vscode-extensions.txt` vscode extensions list
-
 - `bootstrap/`
-  Help install and set up important system packages and flatpack apps (e.g., docker, stow, npm, a browset etc.)
+  Help install and set up important system packages and flatpack apps
 
-## Theme Resources
+## Theming Resources
 
 Below are some common themes/pallates that are commonly used, easily available and most importantly look nice. There are links to resources to theme the system (e.g., gtk themes, icon themes etc.). 
 
@@ -40,19 +35,17 @@ GTK Gruvbox theme: https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme
 
 Gruvbox Icon Pack: https://github.com/SylEleuth/gruvbox-plus-icon-pack
 
+
+### Updating the Theme (TODO)
+
+TODO: Document the steps to update the configs for different desktop componenets for theming. (e.g., bar, terminal, sway config etc) 
+
 ## Bootstrap 
 
-This is mostly for me to maintain a list of packages that I would like on any system, as well as a method to install all of it easily. 
-Mostly just software that I would like to be available immediately or that I would be using frequently. Should be a fairly light list. 
+This is me maintaining a list of packages that I would like on any system, as well as a method to install all of it easily. 
 
- Within `bootstrap` there is a simple bootstrap script that installs:
-- System packages from `bootstrap/packages/apt.txt` (Debian/Ubuntu/Mint)
-- Flatpak apps from `bootstrap/packages/flatpak.txt` (via Flathub)
+Mostly just software used in this repository of configs (e.g., wm, bar, fonts, widgets etc) or other software that would be used frequently.
 
-Run:
-```bash
-cd ~/dotfiles
-chmod +x bootstrap/install.sh
-./bootstrap/install.sh
-```
-Currently I only have a list for apt packages, but the script supports apt and pacman package managers. More lists and support in the future perhaps
+### Scripts (TODO)
+
+Need to make focused script to install different things for the system.
